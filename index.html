@@ -1,0 +1,164 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>ערכת שכר דירה</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10">
+    <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-6">ערכת שכר דירה בתל אביב</h1>
+        <form method="POST" action="/predict" class="space-y-4">
+            <input name="address" hidden value="תל אביב" />
+            <input name="description" hidden value="..." />
+	   <div>
+  		<label>סוג נכס:</label>
+  		<select name="property_type" id="property_type" required class="w-full border p-2">
+    		<option value="">בחר סוג נכס</option>
+    		<option value="דירה">דירה</option>
+    		<option value="דירת גן">דירת גן</option>
+    		<option value="פרטי/קוטג'">פרטי/קוטג'</option>
+    		<option value="גג/פנטהאוז">גג/פנטהאוז</option>
+    		<option value="כללי">כללי</option>
+  	     </select>
+	   </div>
+	    <div>
+    			<label>בחר שכונה:</label>
+    			<select name="neighborhood" class="w-full border p-2" required>
+        		<option value="">בחר שכונה</option>
+        		<option value="אזורי חן">אזורי חן</option>
+        		<option value="אפקה">אפקה</option>
+        		<option value="בית שטראוס">בית שטראוס</option>
+        		<option value="בצרון">בצרון</option>
+        		<option value="גבעת הרצל">גבעת הרצל</option>
+        		<option value="דקר">דקר</option>
+        		<option value="הגוש הגדול">הגוש הגדול</option>
+        		<option value="הדר יוסף">הדר יוסף</option>
+        		<option value="המשתלה">המשתלה</option>
+        		<option value="הצפון החדש החלק הדרומי">הצפון החדש החלק הדרומי</option>
+        		<option value="הצפון החדש החלק הצפוני">הצפון החדש החלק הצפוני</option>
+        		<option value="הצפון החדש סביבת ככר המדינה">הצפון החדש סביבת ככר המדינה</option>
+        		<option value="הצפון הישן החלק הדרום מזרחי">הצפון הישן החלק הדרום מזרחי</option>
+        		<option value="הצפון הישן החלק הדרום מערבי">הצפון הישן החלק הדרום מערבי</option>
+        		<option value="הצפון הישן החלק המרכזי">הצפון הישן החלק המרכזי</option>
+        		<option value="הצפון הישן החלק הצפוני">הצפון הישן החלק הצפוני</option>
+        		<option value="הקריה">הקריה</option>
+        		<option value="התקווה">התקווה</option>
+        		<option value="חוף הצוק">חוף הצוק</option>
+        		<option value="יד אליהו">יד אליהו</option>
+        		<option value="יפו ג">יפו ג</option>
+        		<option value="יפו ד">יפו ד</option>
+        		<option value="כפיר">כפיר</option>
+        		<option value="כרם התימנים">כרם התימנים</option>
+        		<option value="לב תל אביב החלק הדרומי">לב תל אביב החלק הדרומי</option>
+        		<option value="לבנה">לבנה</option>
+        		<option value="לינקולן">לינקולן</option>
+        		<option value="מונטיפיורי">מונטיפיורי</option>
+        		<option value='מע"ר צפוני'>מע"ר צפוני</option>
+        		<option value="מרכז יפו מזרחית לשדרות ירושלים">מרכז יפו מזרחית לשדרות ירושלים</option>
+        		<option value="נאות אפקה א">נאות אפקה א</option>
+        		<option value="נאות אפקה ב">נאות אפקה ב</option>
+        		<option value="נוה אביבים">נוה אביבים</option>
+        		<option value="נוה אליעזר">נוה אליעזר</option>
+        		<option value="נוה חן">נוה חן</option>
+        		<option value="נוה שאנן">נוה שאנן</option>
+        		<option value="נוה שרת">נוה שרת</option>
+        		<option value="נחלת יצחק">נחלת יצחק</option>
+        		<option value="עג'מי">עג'מי</option>
+        		<option value="עזרא">עזרא</option>
+        		<option value="פארק צמרת">פארק צמרת</option>
+        		<option value="פלורנטין">פלורנטין</option>
+        		<option value="צהלון">צהלון</option>
+        		<option value="צפון יפו">צפון יפו</option>
+        		<option value="קרית שלום">קרית שלום</option>
+        		<option value="רביבים">רביבים</option>
+        		<option value="רמת אביב">רמת אביב</option>
+        		<option value="רמת אביב ג">רמת אביב ג</option>
+        		<option value="רמת אביב החדשה">רמת אביב החדשה</option>
+        		<option value="רמת החייל">רמת החייל</option>
+        		<option value="רמת הטייסים">רמת הטייסים</option>
+        		<option value="רמת ישראל">רמת ישראל</option>
+        		<option value="שבזי">שבזי</option>
+        		<option value="שיכון בבלי">שיכון בבלי</option>
+        		<option value="שיכוני חסכון">שיכוני חסכון</option>
+        		<option value="שפירא">שפירא</option>
+        		<option value="תל ברוך צפון">תל ברוך צפון</option>
+        		<option value="תל חיים">תל חיים</option>
+        		<option value="תל כביר">תל כביר</option>
+    		</select>
+	    </div>
+	    <div>
+  		<label>מס' חדרים:</label>
+  		<input type="number" name="room_num" id="room_num" step="0.5" min="0.5" required class="w-full border p-2" />
+  		<p class="text-red-500 text-sm mt-1 hidden" id="error_room_num"></p>
+	    </div>
+            <div><label>קומה:</label><input type="number" name="floor" class="w-full border p-2"/></div>
+	    <div>
+  		<label>שטח:</label>
+  		<input type="number" name="area" id="area" min="10" max="200" required class="w-full border p-2" />
+  		<p class="text-red-500 text-sm mt-1 hidden" id="error_area"></p>
+	    </div>
+            <div><label>שטח גינה:</label><input type="number" name="garden_area" class="w-full border p-2"/></div>
+            <div><label>מס' ימים לכניסה:</label><input type="number" name="days_to_enter" class="w-full border p-2"/></div>
+            <div><label>מס' תשלומים:</label><input type="number" name="num_of_payments" class="w-full border p-2"/></div>
+            <div><label>ארנונה חודשית:</label><input type="number" name="monthly_arnona" class="w-full border p-2"/></div>
+            <div><label>ועד בית:</label><input type="number" name="building_tax" class="w-full border p-2"/></div>
+            <div><label>סה"כ קומות:</label><input type="number" name="total_floors" class="w-full border p-2"/></div>
+            <div><label>מס' תמונות:</label><input type="number" name="num_of_images" class="w-full border p-2"/></div>
+            <div><label>מרחק ממרכז:</label><input type="number" name="distance_from_center" class="w-full border p-2"/></div>
+
+            <!-- Boolean fields -->
+            {% for field in ['has_parking', 'has_storage', 'elevator', 'ac', 'handicap', 'has_bars', 'has_safe_room', 'has_balcony', 'is_furnished', 'is_renovated'] %}
+            <div>
+                <label>{{ field }}</label>
+                <select name="{{ field }}" class="w-full border p-2">
+                    <option value="1">כן</option>
+                    <option value="0">לא</option>
+                </select>
+            </div>
+            {% endfor %}
+
+            <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">הערך שכר דירה</button>
+        </form>
+
+        {% if prediction %}
+        <div class="mt-6 text-center text-xl font-bold text-green-600">
+            המחיר החזוי: ₪ {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+<script>
+	document.querySelector("form").addEventListener("submit", function (e) {
+  	let valid = true;
+
+  	function validateField(id, min = null, max = null) {
+    		const input = document.getElementById(id);
+    		const error = document.getElementById(`error_${id}`);
+    		const value = parseFloat(input.value);
+    		error.classList.add("hidden");
+
+    	if (isNaN(value)) {
+      		error.textContent = "נא להזין מספר תקין";
+      		error.classList.remove("hidden");
+      		valid = false;
+    	} else if (min !== null && value < min) {
+      		error.textContent = `הערך חייב להיות לפחות ${min}`;
+      		error.classList.remove("hidden");
+      		valid = false;
+    	} else if (max !== null && value > max) {
+      		error.textContent = `הערך חייב להיות לכל היותר ${max}`;
+      		error.classList.remove("hidden");
+      		valid = false;
+    	}
+     }
+
+  // בדיקות ספציפיות
+  	validateField("room_num", 0.1);   // כי אתה רוצה > 0
+  	validateField("area", 10, 200);
+
+ 	 if (!valid) e.preventDefault();
+	});
+</script>
+</body>
+</html>
